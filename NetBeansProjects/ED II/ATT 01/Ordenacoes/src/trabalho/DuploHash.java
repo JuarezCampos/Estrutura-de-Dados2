@@ -16,7 +16,7 @@ public class DuploHash extends Hash {
         super(tamTabela);
     }
 
-    //Funcao principal hash utilizada
+    
    
     //Funcao hash auxiliar para tratar colisões
     private int h1(int ChaveID) {
@@ -28,6 +28,7 @@ public class DuploHash extends Hash {
         return (5 + ChaveID % 13) % tamanhoDaTabela;
     }
 
+    //Funcao principal hash utilizada
     @Override
     int hash(int ChaveID, int colisao) {
      return (h1(ChaveID) + colisoes * h2(ChaveID)) % tamanhoDaTabela;  

@@ -107,7 +107,7 @@ public class Trabalho {
         //ordena.imprime(vet);
 
         // TODO code application logic here
-        
+       
          System.out.println("Sondagem Linear");
         SondagemLinear h1teste = new SondagemLinear(5);
          h1teste.insere(0, -7);
@@ -131,8 +131,26 @@ public class Trabalho {
          dhasht.imprimir();
          
          int teste = dhasht.Busca(1);
-         System.out.println("\n " + "O valor da busca de chave 1 " + teste);
+         System.out.println("\n " + "O valor da busca HashDuplo de chave 1 " + teste);
          
+         System.out.println("");
+         System.out.println("Quadrática");
+         
+         SondagemQuadratica quadra = new SondagemQuadratica(5);
+         quadra.insere(0, -7);
+         quadra.insere(1, -3);
+         quadra.insere(2, 3);
+         quadra.insere(3, 1);
+         quadra.insere(4, 8);
+         
+         quadra.imprimir();
+         
+         quadra.remove(1);
+         
+         quadra.imprimir();
+         
+         //int teste2 = quadra.Busca(0);
+         //System.out.println("\n " + "O valor da busca Quadratica de chave 6 " + teste2);
     }
     
 }

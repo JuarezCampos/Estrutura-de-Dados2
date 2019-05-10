@@ -97,30 +97,46 @@ public abstract class Hash {
         int indice;
         
         boolean aux = isPrime(chave);
+        if(chave < tamanhoDaTabela){
         for (int j = 0; j < tamanhoDaTabela; j++) {//j conta o numero de colisões realizadas
             
             if (aux == true){  // se chave é primo
-            indice = hash(chave, j);//busca o valor do indice da tabela
-            if (tabelaHash[indice] == -1) {//se a tabela no indice estiver vazia, o Tweet nao esta presente
+            indice = hash(chave, j); //busca o valor do indice da tabela
+            if (tabelaHash[indice] == -1) {//se a tabela no indice estiver vazia, o indice será -1
                 comparacoes++;
                 break;
-            } else if (tabelaHash[indice] == valores[chave]) {//se for encontrado,retorna o TweetID
+            } else if (tabelaHash[indice] == valores[chave]) {//se for encontrado,retorna o Indice da Chave
                 comparacoes++;
                 return tabelaHash[indice];
             }
             } else{
-                indice = hash(chave%3, j);//busca o valor do indice da tabela
-            if (tabelaHash[indice] == -1) {//se a tabela no indice estiver vazia, o Tweet nao esta presente
+                indice = hash(chave%3, j);//busca o valor do indice da tabela se o numero n é primo
+            if (tabelaHash[indice] == -1) {//se a tabela no indice estiver vazia, indice nao esta presente
                 comparacoes++;
-            } else if (tabelaHash[indice] == valores[(chave)]) {//se for encontrado,retorna o TweetID
+            } else if (tabelaHash[indice] == valores[(chave)]) {//se for encontrado,retorna o Indice da Chave
                 comparacoes++;
                 return tabelaHash[indice];
                 
             }
             }
         }
-        System.out.println("Chave não encontrada.");//se a busca for completada, e o tweet nao encontrado, retorna -1
+        System.out.println("Chave não encontrada.");//se a busca for completada, e chave nao encontrado, retorna -1
         return -1;
+        }
+        else{
+         System.out.println("Chave inválida.");
+         return -1;
+        }
+    }
+       
+     public void remove(int chave) {
+        int indice = Busca(chave);//busca a chave na tabela
+        if (indice != -1) { //se estiver presente, subistitui por um -1;
+                if(tabelaHash[chave] != (-1))
+                    tabelaHash[chave] = -1;
+                
+        }
+
     }
 
     public void imprimir() {
@@ -129,7 +145,6 @@ public abstract class Hash {
             if (tabelaHash[i] != -1) {
                 System.out.println("Valor da Tabela Hash posicao " + i + " " + tabelaHash[i]);;
             }
-
         }
         System.out.println("Numero de colisoes " + colisoes);
         System.out.println("Numero de comparacoes " + comparacoes);
